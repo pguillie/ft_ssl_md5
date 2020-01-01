@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_ssl.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/22 15:28:54 by pguillie          #+#    #+#             */
-/*   Updated: 2019/12/29 11:54:07 by pguillie         ###   ########.fr       */
+/*   Created: 2019/12/23 12:30:32 by pguillie          #+#    #+#             */
+/*   Updated: 2019/12/29 12:49:19 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#ifndef FT_SSL_H
+# define FT_SSL_H
 
-int main(int argc, char *argv[])
-{
-	(void)argc;
-	for (char **av = argv; *av; av++)
-		ft_md5_string(*av);
-	return (0);
-}
+# include "ft_md5.h"
+
+#endif /* FT_SSL_H */
