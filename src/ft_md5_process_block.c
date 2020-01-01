@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 19:19:35 by pguillie          #+#    #+#             */
-/*   Updated: 2019/12/29 13:04:19 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/01 16:12:41 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ static void ft_md5_round1(uint32_t d[4], uint32_t x[16])
 	while (i < 16) {
 		d[0] += ((d[1] & d[2]) | (~d[1] & d[3])) + x[k]
 			+ md5_process_table[i];
-		//d[0] += md5_f(d[1], d[2], d[3]) + x[k] + md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
-//		d[0] = md5_shift(d[0], s[i & 0x3]);
 		d[0] += d[1];
 		tmp = d[3];
 		d[3] = d[2];
@@ -70,9 +68,7 @@ static void ft_md5_round2(uint32_t d[4], uint32_t x[16])
 	while (i < 32) {
 		d[0] += ((d[1] & d[3]) | (d[2] & ~d[3])) + x[k]
 			+ md5_process_table[i];
-//		d[0] += md5_g(d[1], d[2], d[3]) + x[k] + md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
-//		d[0] = md5_shift(d[0], s[i & 0x3]);
 		d[0] += d[1];
 		tmp = d[3];
 		d[3] = d[2];
@@ -96,9 +92,7 @@ static void ft_md5_round3(uint32_t d[4], uint32_t x[16])
 	i = 32;
 	while (i < 48) {
 		d[0] += (d[1] ^ d[2] ^ d[3]) + x[k] + md5_process_table[i];
-//		d[0] += md5_g(d[1], d[2], d[3]) + x[k] + md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
-//		d[0] = md5_shift(d[0], s[i & 0x3]);
 		d[0] += d[1];
 		tmp = d[3];
 		d[3] = d[2];
@@ -122,9 +116,7 @@ static void ft_md5_round4(uint32_t d[4], uint32_t x[16])
 	i = 48;
 	while (i < 64) {
 		d[0] += (d[2] ^ (d[1] | ~d[3])) + x[k] + md5_process_table[i];
-//		d[0] += md5_g(d[1], d[2], d[3]) + x[k] + md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
-//		d[0] = md5_shift(d[0], s[i & 0x3]);
 		d[0] += d[1];
 		tmp = d[3];
 		d[3] = d[2];
