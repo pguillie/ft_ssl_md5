@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   ft_puterr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 12:30:32 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/07 21:30:25 by pguillie         ###   ########.fr       */
+/*   Created: 2020/01/07 19:55:42 by pguillie          #+#    #+#             */
+/*   Updated: 2020/01/08 16:45:15 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "libft.h"
 
-# include "ft_md5.h"
-# include "libft.h"
-
-typedef int (*t_ssl_command)(char *arg[]);
-
-int ft_ssl_invalid_command(const char *invalid);
-
-t_ssl_command ft_ssl_set_command(const char *command);
-
-#endif /* FT_SSL_H */
+void ft_puterr(const char *e)
+{
+	write(2, e, ft_strlen(e));
+}

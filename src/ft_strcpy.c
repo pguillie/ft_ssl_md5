@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 12:30:32 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/07 21:30:25 by pguillie         ###   ########.fr       */
+/*   Created: 2020/01/07 21:11:15 by pguillie          #+#    #+#             */
+/*   Updated: 2020/01/08 19:47:50 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include <stddef.h>
 
-# include "ft_md5.h"
-# include "libft.h"
+char *ft_strcpy(char *dest, const char *src)
+{
+	size_t i;
 
-typedef int (*t_ssl_command)(char *arg[]);
-
-int ft_ssl_invalid_command(const char *invalid);
-
-t_ssl_command ft_ssl_set_command(const char *command);
-
-#endif /* FT_SSL_H */
+	i = 0;
+	while (*src)
+		dest[i++] = *src++;
+	dest[i] = '\0';
+	return (dest);
+}

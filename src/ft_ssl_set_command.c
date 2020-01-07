@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   ft_ssl_set_command.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 12:30:32 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/07 21:30:25 by pguillie         ###   ########.fr       */
+/*   Created: 2020/01/07 20:19:27 by pguillie          #+#    #+#             */
+/*   Updated: 2020/01/07 20:39:18 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_ssl.h"
 
-# include "ft_md5.h"
-# include "libft.h"
+struct {
+	char *cmd;
+	t_ssl_command func;
+} g_ssl_command[] = {
+	{"md5", &ft_md5},
+//	{"sha256", &ft_sha256}
+};
 
-typedef int (*t_ssl_command)(char *arg[]);
+t_ssl_command ft_ssl_set_command(const char *command)
+{
+	size_t n;
 
-int ft_ssl_invalid_command(const char *invalid);
-
-t_ssl_command ft_ssl_set_command(const char *command);
-
-#endif /* FT_SSL_H */
+	n = sizeof(g_ssl_command) / sizeof(g_ssl_command[0]);
+	while (n--) {
+		if (ft_strcmp(g_ssl_command[n].cmd, command) == 0)
+			return (g_ssl_command[n].func);
+	}
+	return (NULL);
+}

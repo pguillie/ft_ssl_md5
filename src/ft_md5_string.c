@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_md5_process_message.c                           :+:      :+:    :+:   */
+/*   ft_md5_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 18:32:22 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/09 11:00:54 by pguillie         ###   ########.fr       */
+/*   Created: 2020/01/07 20:30:36 by pguillie          #+#    #+#             */
+/*   Updated: 2020/01/08 18:51:55 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_md5.h"
 
-void ft_md5_process_message(struct s_md5_data *data, const char *msg,
-	uint64_t len)
+int ft_md5_string(const char *str, int opt)
 {
-	data->length += len << 3;
-	while (len >= 64) {
-		ft_md5_process_block(data->digest, (uint32_t *)msg);
-		len -= 64;
-		msg += 64;
+	struct s_md5_data data;
+
+	ft_md5_init(&data);
+	ft_md5_process_message(&data, str, ft_strlen(str));
+	ft_md5_append_length(&data);
+	if (!(opt & MD5_REVERSE)) {
+		ft_putstr("MD5 (\"");
+		ft_putstr(str);
+		ft_putstr("\") = ");
 	}
-	if (len != 0)
-		data->end = msg;
+	ft_md5_print_digest(data.digest);
+	if (opt == MD5_REVERSE) {
+		ft_putstr(" \"");
+		ft_putstr(str);
+		ft_putstr("\"\n");
+	} else {
+		ft_putstr("\n");
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 10:42:16 by pguillie          #+#    #+#             */
-/*   Updated: 2019/12/29 12:30:39 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/09 12:17:42 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void ft_md5_append_length(struct s_md5_data *data)
 	size_t size;
 
 	len = (data->length & 0x1ff) >> 3;
-	memcpy(block, data->end, len);
+	ft_memcpy(block, data->end, len);
 	size = (len < 56) ? 64 : 128;
-	block[len++] = 1 << 7;
+	block[len++] = (char)(1 << 7);
 	while (len < size - 8)
 		block[len++] = 0;
 	*(uint64_t *)(block + len) = data->length;

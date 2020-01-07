@@ -6,20 +6,25 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 15:24:51 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/01 16:07:16 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/08 18:52:14 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MD5_H
 # define FT_MD5_H
 
-#include <unistd.h>
-#include <stdint.h>
+# include <sys/stat.h>
+# include <stddef.h>
+# include <unistd.h>
+# include <stdint.h>
+# include <fcntl.h>
 
+# include "libft.h"
 
-#include <stdio.h> //
-#include <string.h>//
+# include <stdio.h> //
 
+# define MD5_QUIET (3)
+# define MD5_REVERSE (1)
 
 struct s_md5_data {
 	uint32_t digest[4];
@@ -27,9 +32,11 @@ struct s_md5_data {
 	const char *end;
 };
 
-int ft_md5(int ac, char *av);
+int ft_md5(char *av[]);
 
-void ft_md5_string(const char *str);
+int ft_md5_string(const char *str, int opt);
+int ft_md5_file(const char *filenamem, int opt);
+int ft_md5_stdin(int echo);
 
 void ft_md5_init(struct s_md5_data *data);
 void ft_md5_process_message(struct s_md5_data *data, const char *str,

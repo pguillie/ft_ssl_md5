@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 15:28:54 by pguillie          #+#    #+#             */
-/*   Updated: 2019/12/29 11:54:07 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/08 15:55:11 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 int main(int argc, char *argv[])
 {
-	(void)argc;
-	for (char **av = argv; *av; av++)
-		ft_md5_string(*av);
-	return (0);
+	t_ssl_command command;
+
+	if (argc == 1) {
+		ft_putstr("Usage: ft_ssl command"
+			" [ command_opts ] [ command_args ]\n");
+		return (1);
+	}
+	command = ft_ssl_set_command(argv[1]);
+	if (command == NULL)
+		return (ft_ssl_invalid_command(argv[1]));
+	return (command(argv + 2));
 }

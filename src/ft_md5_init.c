@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 10:24:19 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/01 16:06:34 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:42:12 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void ft_md5_init(struct s_md5_data *data)
 	};
 
 	data->length = 0;
-	memcpy(data->digest, md5_init_digest, sizeof(data->digest)); // libft
+	ft_memcpy(data->digest, md5_init_digest, sizeof(data->digest));
 	data->end = NULL;
 }

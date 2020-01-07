@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 12:30:32 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/07 21:30:25 by pguillie         ###   ########.fr       */
+/*   Created: 2020/01/07 20:26:36 by pguillie          #+#    #+#             */
+/*   Updated: 2020/01/07 20:28:25 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
-
-# include "ft_md5.h"
-# include "libft.h"
-
-typedef int (*t_ssl_command)(char *arg[]);
-
-int ft_ssl_invalid_command(const char *invalid);
-
-t_ssl_command ft_ssl_set_command(const char *command);
-
-#endif /* FT_SSL_H */
+int ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2) {
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
