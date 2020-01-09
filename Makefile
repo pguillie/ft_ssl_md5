@@ -6,7 +6,7 @@
 #    By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/22 15:06:34 by pguillie          #+#    #+#              #
-#    Updated: 2020/01/08 18:11:50 by pguillie         ###   ########.fr        #
+#    Updated: 2020/01/10 10:52:30 by pguillie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,6 +37,15 @@ sources = $(addprefix $(srcdir),		\
 	ft_md5_process_block.c			\
 	ft_md5_append_length.c			\
 	ft_md5_print_digest.c			\
+	ft_sha256.c				\
+	ft_sha256_string.c			\
+	ft_sha256_file.c			\
+	ft_sha256_stdin.c			\
+	ft_sha256_init.c			\
+	ft_sha256_process_message.c		\
+	ft_sha256_process_block.c		\
+	ft_sha256_append_length.c		\
+	ft_sha256_print_digest.c		\
 	ft_strlen.c				\
 	ft_putstr.c				\
 	ft_puterr.c				\
