@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 15:24:51 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/08 18:52:14 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/11 15:01:19 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int ft_md5(char *av[]);
 
 int ft_md5_string(const char *str, int opt);
 int ft_md5_file(const char *filenamem, int opt);
-int ft_md5_stdin(int echo);
+int ft_md5_stdin(int tee);
 
 void ft_md5_init(struct s_md5_data *data);
 void ft_md5_process_message(struct s_md5_data *data, const char *str,
