@@ -6,13 +6,13 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 20:13:25 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/07 20:36:56 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 21:50:37 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-int ft_ssl_invalid_command(const char *invalid)
+int	ft_ssl_invalid_command(const char *invalid)
 {
 	ft_puterr("ft_ssl: Error: '");
 	ft_puterr(invalid);

@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 19:19:35 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/15 23:13:34 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 23:23:17 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 ** table[i] represents the first thirty-two bits of the fractional
 ** parts of the cube roots of the i-th prime number.
 */
-const uint32_t g_sha256_table[64] = {
+
+const uint32_t			g_sha256_table[64] = {
 	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b,
 	0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01,
 	0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7,
@@ -32,17 +33,18 @@ const uint32_t g_sha256_table[64] = {
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-static inline uint32_t rotr(uint32_t x, int n)
+static inline uint32_t	rotr(uint32_t x, int n)
 {
 	return ((x >> n) | (x << (32 - n)));
 }
 
-static void prepare_schedule(uint32_t w[64], uint32_t block[16])
+static void				prepare_schedule(uint32_t w[64], uint32_t block[16])
 {
 	size_t i;
 
 	i = 0;
-	while (i < 16) {
+	while (i < 16)
+	{
 		w[i] = \
 			((block[i] & 0xff) << 24)
 			| ((block[i] & (0xff << 8)) << 8)
@@ -50,7 +52,8 @@ static void prepare_schedule(uint32_t w[64], uint32_t block[16])
 			| ((block[i] & (0xff << 24)) >> 24);
 		i++;
 	}
-	while (i < 64) {
+	while (i < 64)
+	{
 		w[i] = w[i - 7] + w[i - 16];
 		w[i] += rotr(w[i - 2], 17) ^ rotr(w[i - 2], 19)
 			^ (w[i - 2] >> 10);
@@ -60,13 +63,14 @@ static void prepare_schedule(uint32_t w[64], uint32_t block[16])
 	}
 }
 
-static void compute(uint32_t d[4], uint32_t w[64])
+static void				compute(uint32_t d[4], uint32_t w[64])
 {
-	uint32_t t[2];
-	size_t i;
+	uint32_t	t[2];
+	size_t		i;
 
 	i = 0;
-	while (i < 64) {
+	while (i < 64)
+	{
 		t[0] = (rotr(d[4], 6) ^ rotr(d[4], 11) ^ rotr(d[4], 25))
 			+ ((d[4] & d[5]) ^ ((~d[4]) & d[6]))
 			+ d[7] + g_sha256_table[i] + w[i];
@@ -84,11 +88,12 @@ static void compute(uint32_t d[4], uint32_t w[64])
 	}
 }
 
-void ft_sha256_process_block(uint32_t digest[8], uint32_t block[16])
+void					ft_sha256_process_block(uint32_t digest[8],
+		uint32_t block[16])
 {
-	uint32_t save[8];
-	uint32_t schedule[64];
-	size_t i;
+	uint32_t	save[8];
+	uint32_t	schedule[64];
+	size_t		i;
 
 	prepare_schedule(schedule, block);
 	ft_memcpy(save, digest, sizeof(save));

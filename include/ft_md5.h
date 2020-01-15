@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 15:24:51 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/11 15:01:19 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:02:20 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,26 @@
 
 # include "libft.h"
 
-# include <stdio.h> //
+# define MD5_QUIET 3
+# define MD5_REVERSE 1
 
-# define MD5_QUIET (3)
-# define MD5_REVERSE (1)
-
-struct s_md5_data {
-	uint32_t digest[4];
-	uint64_t length;
-	const char *end;
+struct	s_md5_data {
+	uint32_t	digest[4];
+	uint64_t	length;
+	const char	*end;
 };
 
-int ft_md5(char *av[]);
+int		ft_md5(char *av[]);
 
-int ft_md5_string(const char *str, int opt);
-int ft_md5_file(const char *filenamem, int opt);
-int ft_md5_stdin(int tee);
+int		ft_md5_string(const char *str, int opt);
+int		ft_md5_file(const char *filenamem, int opt);
+int		ft_md5_stdin(int tee);
 
-void ft_md5_init(struct s_md5_data *data);
-void ft_md5_process_message(struct s_md5_data *data, const char *str,
+void	ft_md5_init(struct s_md5_data *data);
+void	ft_md5_process_message(struct s_md5_data *data, const char *str,
 	uint64_t length);
-void ft_md5_process_block(uint32_t digest[4], uint32_t block[16]);
-void ft_md5_append_length(struct s_md5_data *data);
-void ft_md5_print_digest(const uint32_t digest[4]);
+void	ft_md5_process_block(uint32_t digest[4], uint32_t block[16]);
+void	ft_md5_append_length(struct s_md5_data *data);
+void	ft_md5_print_digest(const uint32_t digest[4]);
 
-#endif /* FT_MD5_H */
+#endif

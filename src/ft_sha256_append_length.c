@@ -6,17 +6,17 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 10:42:16 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/15 20:52:13 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:20:00 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sha256.h"
 
-void ft_sha256_append_length(struct s_sha256_data *data)
+void	ft_sha256_append_length(struct s_sha256_data *data)
 {
-	char block[128];
-	size_t len;
-	size_t size;
+	char	block[128];
+	size_t	len;
+	size_t	size;
 
 	len = (data->length & 0x1ff) >> 3;
 	ft_memcpy(block, data->end, len);

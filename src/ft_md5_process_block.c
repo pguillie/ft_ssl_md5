@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 19:19:35 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/09 20:11:26 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:15:50 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,17 @@ const uint32_t g_md5_process_table[64] = {
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 };
 
-static void ft_md5_round1(uint32_t d[4], uint32_t x[16])
+static void	ft_md5_round1(uint32_t d[4], uint32_t x[16])
 {
-	const int s[4] = {7, 12, 17, 22};
-	uint32_t tmp;
-	int k;
-	int i;
+	const int	s[4] = {7, 12, 17, 22};
+	uint32_t	tmp;
+	int			k;
+	int			i;
 
 	k = 0;
 	i = 0;
-	while (i < 16) {
+	while (i < 16)
+	{
 		d[0] += ((d[1] & d[2]) | (~d[1] & d[3])) + x[k]
 			+ g_md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
@@ -56,16 +57,17 @@ static void ft_md5_round1(uint32_t d[4], uint32_t x[16])
 	}
 }
 
-static void ft_md5_round2(uint32_t d[4], uint32_t x[16])
+static void	ft_md5_round2(uint32_t d[4], uint32_t x[16])
 {
-	const int s[4] = {5, 9, 14, 20};
-	uint32_t tmp;
-	int k;
-	int i;
+	const int	s[4] = {5, 9, 14, 20};
+	uint32_t	tmp;
+	int			k;
+	int			i;
 
 	k = 1;
 	i = 16;
-	while (i < 32) {
+	while (i < 32)
+	{
 		d[0] += ((d[1] & d[3]) | (d[2] & ~d[3])) + x[k]
 			+ g_md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
@@ -78,19 +80,19 @@ static void ft_md5_round2(uint32_t d[4], uint32_t x[16])
 		k = (k + 5) & 0xf;
 		i += 1;
 	}
-
 }
 
-static void ft_md5_round3(uint32_t d[4], uint32_t x[16])
+static void	ft_md5_round3(uint32_t d[4], uint32_t x[16])
 {
-	const int s[4] = {4, 11, 16, 23};
-	uint32_t tmp;
-	int k;
-	int i;
+	const int	s[4] = {4, 11, 16, 23};
+	uint32_t	tmp;
+	int			k;
+	int			i;
 
 	k = 5;
 	i = 32;
-	while (i < 48) {
+	while (i < 48)
+	{
 		d[0] += (d[1] ^ d[2] ^ d[3]) + x[k] + g_md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
 		d[0] += d[1];
@@ -102,19 +104,19 @@ static void ft_md5_round3(uint32_t d[4], uint32_t x[16])
 		k = (k + 3) & 0xf;
 		i += 1;
 	}
-
 }
 
-static void ft_md5_round4(uint32_t d[4], uint32_t x[16])
+static void	ft_md5_round4(uint32_t d[4], uint32_t x[16])
 {
-	const int s[4] = {6, 10, 15, 21};
-	uint32_t tmp;
-	int k;
-	int i;
+	const int	s[4] = {6, 10, 15, 21};
+	uint32_t	tmp;
+	int			k;
+	int			i;
 
 	k = 0;
 	i = 48;
-	while (i < 64) {
+	while (i < 64)
+	{
 		d[0] += (d[2] ^ (d[1] | ~d[3])) + x[k] + g_md5_process_table[i];
 		d[0] = ((d[0] << s[i & 0x3]) | (d[0] >> (32 - s[i & 0x3])));
 		d[0] += d[1];
@@ -126,13 +128,12 @@ static void ft_md5_round4(uint32_t d[4], uint32_t x[16])
 		k = (k + 7) & 0xf;
 		i += 1;
 	}
-
 }
 
-void ft_md5_process_block(uint32_t digest[4], uint32_t block[16])
+void		ft_md5_process_block(uint32_t digest[4], uint32_t block[16])
 {
-	uint32_t save[4];
-	size_t i;
+	uint32_t	save[4];
+	size_t		i;
 
 	ft_memcpy(save, digest, sizeof(save));
 	ft_md5_round1(digest, block);

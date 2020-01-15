@@ -6,13 +6,13 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 19:55:42 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/08 16:45:15 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:18:15 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_puterr(const char *e)
+void	ft_puterr(const char *e)
 {
 	write(2, e, ft_strlen(e));
 }

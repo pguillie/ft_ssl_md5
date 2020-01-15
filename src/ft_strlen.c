@@ -6,13 +6,13 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 16:31:10 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/08 16:31:55 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:31:55 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t l;
 
