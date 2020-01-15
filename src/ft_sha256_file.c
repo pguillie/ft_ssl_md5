@@ -6,7 +6,7 @@
 /*   By: pguillie <pguillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 20:31:03 by pguillie          #+#    #+#             */
-/*   Updated: 2020/01/10 10:55:12 by pguillie         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:34:49 by pguillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int ft_sha256_file(const char *filename, int opt)
 	if (fd == -1)
 		return (1);
 	ft_sha256_init(&data);
-	while ((n = read(fd, buf, sizeof(buf))) > 0) {;}
+	while ((n = read(fd, buf, sizeof(buf))) > 0)
 		ft_sha256_process_message(&data, buf, n);
 	close(fd);
 	ft_sha256_append_length(&data);
